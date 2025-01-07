@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CountryModel>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <h2>Country List Page</h2>
+
+    <div><span class="text-danger">@TempData["ErrorMessage"]</span></div>
+
+    <div class="card">
+        <div class="card-body">
+             <div class=" w-full d-flex justify-content-end pt-2">
+            <a class="w-fit" asp-controller="Country" asp-action="CountryAddEdit">
+            <button class=" btn btn-primary"> Add Country</button>
+            </a>
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">CountryID</th>
+                        <th scope="col">CountryName</th>
+                        <th scope="col">CountryCode</th>
+                        <th scope="col">CreatedDate</th>
+                        <th scope="col">ModifiedDate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var row in Model)
+                    {
+                        <tr>
+                            <td>@row.CountryID</td>
+                            <td>@row.CountryCode</td>
+                            <td>@row.CountryName</td>
+                            <td>@row.CreatedDate</td>
+                            <td>@row.ModifiedDate</td>
+                            <td>
+                                <a class="btn btn-primary " asp-controller="Country" asp-action="CountryAddEdit" asp-route-CountryID="@row.CountryID">Edit</a>
+                            </td>
+
+                            <td>
+                                <a class="btn btn-danger" asp-controller="Country" asp-action="DeleteCountry" asp-route-CountryID="@row.CountryID">Delete</a>
+
+                            </td>
+
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+            <!-- End Table with stripped rows -->
+
+        </div>
+    </div>
+
+</body>
+</html>
+

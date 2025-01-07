@@ -1,0 +1,39 @@
+﻿@* @model AddressBook.Models.CountryModel
+
+<h2>Add/Edit City</h2>
+<form method="post" asp-controller="Country" asp-action="CountrySave">
+
+    <label>Country Name</label>
+    <input type="text" asp-controller="Country" asp-for="CountryName" />
+
+    <label>Country Code</label>
+    <input type="text" asp-controller="Country" asp-for="CountryCode" />
+    <input type="hidden" asp-controller="Country" asp-for="CountryID"/>
+    <button type="submit">Save</button>
+</form>
+ *@
+
+
+ @using System.Data;
+@model AddressBook.Models.CountryModel;
+
+<form method="post" asp-controller="Country" asp-action="CountrySave">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" value="@Model.CountryName" asp-for="CountryName" placeholder="Enter Country Name Here" />
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" value="@Model.CountryCode" asp-for="CountryCode" placeholder="Enter Country Code Here" />
+            </div>
+        </div>
+        <br />
+
+        <div class="row">
+            <div class="align-content-center">
+                <input type="hidden" asp-for="CountryID" value="@Model.CountryID" asp-controller="Country" />
+                <button type="submit" class="btn btn-outline-primary rounded-2">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
